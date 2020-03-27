@@ -1,32 +1,33 @@
 import socket
 import os
 
-HOST= 'localhost'
+HOST= '192.168.1.52'
 PORT= 8000
 
 con = socket.socket()
 data=""
-msj = bytes(data, 'utf-8')
 
 try:
     con.connect((HOST, PORT))
+    os.system('color e')
+    os.system('cls')
+    print("***Conectado***")
+    
 except:
     print("***Servidor caido***")
-
-print("***Conectado***")
-
 while True:
-    os.system('color e')
+    
     try:
         get = input("Mensaje Cliente a Servidor >> ")
         if get=='exit':
-            os.system('color')
+            os.system('color 7')
+            os.system('cls')
             break
         con.send(bytes(get, 'utf8'))
         data = con.recv(1024)
         print(data)
     except:
-        print("***Servidor caido***")
+        print("***Cliente caido***")
         os.system('color')
         os.system('exit')
         
